@@ -1,7 +1,12 @@
-body, html {
+body{
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+/* body, html {
   height: 100%;
   
-}
+} */
 /* 
 #dd5e9e - dark pink
 #fbdbf3 - light pink
@@ -101,9 +106,8 @@ a:active {
 
 /* footer */
 #footer{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+   
+    margin-top: auto;
     background-color: #ffdcf0;
     
 }
@@ -181,6 +185,7 @@ float:left;
 }
 .home_btn_box{
   display: flex;
+  margin-top: 6%;
   /* -ms-flex-align: center; */
   /* justify-content: space-between; */
 }
@@ -191,11 +196,14 @@ float:left;
  text-align: center;
 }
 .big-heading{
-  font-size: 10rem;
-  color: #6b62aa ;
+  border: 2px solid salmon;
+  top:10%;
+  font-size: 6rem;
+  color: #6359a2 ;
+  text-align: center;
 }
 .home-page-bg{
-  background-image: url("/static/dating/images/home-bg.jpg") ;
+  background-image: url("/static/dating/images/destin_home.png") ;
   height: 90%;
   position:absolute ;
  opacity: 0.8;
