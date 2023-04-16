@@ -1,0 +1,17 @@
+{% extends 'dating/base.html' %}
+{% block content %}
+<div class="home-page-bg">
+    <div class="home-content">
+        <h1 class="big-heading">destin</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt neque, dolore excepturi non dolor 
+            pariatur obcaecati incidunt.
+            Tenetur inventore quo facere accusantium. Soluta quo totam eum corrupti. Voluptas, eius explicabo.
+        </p>
+        <div class="home_btn_box ">
+            <a class="home-btn-box-flex-items" href="{% url  'login' %}"> <button class="btn btn-primary ">Login</button></a>
+            <a class="home-btn-box-flex-items" href="{% url  'register' %}"> <button class="btn btn-primary ">SignUp</button></a>
+        </div>
+    </div>
+</div> 
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'dating/base.html' %}
+{% load static %}
+{% block content %}
+<script>
+  var PageRequestManager = Sys.WebForms.PageRequestManager.getInstance();
+
+  function BlockUI(sender, args) {
+      jQuery('<div id="page-overlay"> </div>').appendTo(document.body);
+
+  }
+
+  function UnblockUI(sender, args) {
+      jQuery('#page-overlay').remove();
+  }
+
+  PageRequestManager.add_beginRequest(BlockUI);
+  PageRequestManager.add_endRequest(UnblockUI);
+
+
+  function modal(){
+       $('.modal').modal('show');
+      //  setTimeout(function () {
+      //  	console.log('hejsan');
+      //  	$('.modal').modal('hide');
+      //  }, 3000);
+    }
+</script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'dating/interset.css' %}">
+<h1>Manage your interests</h1>
+<div class="box">
+  <a class="button_modal" href="#popup1">Click to add Interests</a>
+</div>
+<div class="container mt-5">
+  <h3>Your Interests: </h3>
+   <ul>
+    {% for item in mylist %}
+      <li>Your have {{item}} added as your interest</li>
+    {% endfor %}
+   </ul>
+</div>
+<div id="popup1" class="overlay">
+  <div class="popup">
+    <h2>Select the type of interest</h2>
+    <a class="close" href="#">&times;</a>
+    <div class="content">
+     <div class="btn_box">
+      <a href="/interests/add-music"><button type="button" class="btn btn-secondary btn-lg btn-block" onclick="modal()">click to add music taste</button></a>
+      <button type="button" class="btn btn-secondary btn-lg btn-block">click to add movie taste</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block">click to add anime taste</button>
+      <button type="button" class="btn btn-secondary btn-lg btn-block">click to add books taste</button>
+     </div>
+    
+     </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade bd-example-modal-lg" data-backdrop="static" data-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-sm">
+      <div class="modal-content" style="width: 48px">
+          <span class="fa fa-spinner fa-spin fa-3x"></span>
+      </div>
+  </div>
+</div>
+{% endblock %}

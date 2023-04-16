@@ -1,0 +1,90 @@
+{% extends 'dating/base.html' %}
+{% load static %}
+{% block content %}
+
+<script>
+    function match_user(param1){
+    console.log("running");
+    $.ajax({
+        url : "/pending/match", // the endpoint
+        type : "GET", // http method
+        data : {param_first : param1}, // data sent with the get request
+
+        // handle a successful response
+        success : function(json) {
+            $("#delete" + param1).fadeOut("normal"); 
+            console.log("success"); // another sanity check
+        },
+
+        // handle a non-successful response
+        error : function(xhr,errmsg,err) {
+            console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        }
+    });
+};
+</script>
+
+{% for user in pending_users %}
+
+<div class="card-pending">
+  <div class="card mb-3" >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="{{user.userprofile.image.url}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body mySlides">
+          <h2 class="card-title">{{user.userprofile.first_name}} {{user.userprofile.last_name}}</h2>
+          <p class="card-text"> {{user.userprofile.bio}}</p>
+          <p class="card-text"><small class="text-body-secondary">AGE : {{user.date_of_birth}} </small></p>
+          <p class="card-text"><small class="text-body-secondary">GENDER : {{user.userprofile.gender}}</small></p> <br>
+          <p class="card-text"><small class="text-body-secondary">You have matched on the basis of :</small></p>
+        </div>
+          <button type="button" class="btn btn-light" style="margin-top: 3%; background-color: #b65ba8;" id="{{ user.id }}"" onclick="match_user({{ user.id }}">Match</button>
+          <button type="button" class="btn btn-light" style="margin-top: 3%; margin-left: 10%; background-color: #727ac5">Pass </button>
+        </div>
+        
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}
+
+<script>
+    // slideshow of the pending requests card
+let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+//   let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+//   for (i = 0; i < dots.length; i++) {
+//     dots[i].className = dots[i].className.replace(" active", "");
+//   }
+  slides[slideIndex-1].style.display = "block";
+//   dots[slideIndex-1].className += " active";
+} 
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "dating/base.html" %}
+{% block content %}
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- Password input -->
+                {{ form.non_field_errors }}
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.email.errors }}
+                    <label placeholder="Enter a valid email address" for="{{ form.email.id_for_label }}">Enter Email:</label>
+                    {{ form.email }}
+                </div>
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.password1.errors }}
+                    <label placeholder="Enter password" for="{{ form.password1.id_for_label }}">Enter Password:</label>
+                    {{ form.password1}}
+                </div>
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.password2.errors }}
+                    <label placeholder="Confirm Password" for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+                    {{ form.password2}}
+                </div>
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.date_of_birth.errors }}
+                    <label placeholder="Date of birth" for="{{ form.date_of_birth.id_for_label }}">Date of birth:</label>
+                    {{ form.date_of_birth}}
+                </div>
+      
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- Checkbox -->
+                  <div class="form-check mt-2">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                    <label class="form-check-label" for="form2Example3">
+                      Remember me
+                    </label>
+                  </div>
+                  <a href="#!" class="text-body">Forgot password?</a>
+                </div>
+      
+                <div class="text-center text-lg-start mt-4 pt-2">
+                  <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Register</button>
+                  <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="{% url 'login' %}"
+                      class="link-danger">Login</a></p>
+                </div>
+      
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+{% endblock content %} 

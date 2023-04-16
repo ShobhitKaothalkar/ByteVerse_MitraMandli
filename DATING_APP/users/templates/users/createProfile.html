@@ -1,0 +1,84 @@
+
+{% extends "dating/base.html" %}
+{% block content %}
+    <!-- <div class="content-section">
+        <form  method = "POST" >
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Complete your Profile</legend>
+                {{form }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-primary" type ="submit">finish set up</button>
+            </div>
+        </form>
+    </div> -->
+
+    <section class="vh-80">
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <!-- <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                class="img-fluid" alt="Sample image">
+            </div> -->
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                
+      
+                
+      
+                <!-- Email input -->
+                <!-- <div class="form-outline mb-4">
+                  <input type="email" id="form3Example3" class="form-control form-control-lg"
+                    placeholder="Enter a valid email address" />
+                  <label class="form-label" for="form3Example3">Email address</label>
+                </div> -->
+      
+                <!-- Password input -->
+                {{ form.non_field_errors }}
+                
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.first_name.errors }}
+                    <label placeholder="Enter a valid email address" for="{{ form.first_name.id_for_label }}">First Name:</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.last_name.errors }}
+                    <label placeholder="Enter password" for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                    {{ form.last_name}}
+                </div>
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.gender.errors }}
+                    <label placeholder="Date of birth" for="{{ form.gender.id_for_label }}">Gender:</label>
+                    {{ form.gender}}
+                </div>
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.sexual_orientation.errors }}
+                    <label placeholder="Date of birth" for="{{ form.sexual_orientation.id_for_label }}">Interested In:</label>
+                    {{ form.sexual_orientation}}
+                </div>
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                    {{ form.bio.errors }}
+                    <label placeholder="Date of birth" for="{{ form.bio.id_for_label }}">Bio:</label>
+                    {{ form.bio}}
+                </div>
+                <div class="form-outline fieldWrapper form-control form-control-lg mt-4">
+                  {{ form.image.errors }}
+                  <label placeholder="Enter a valid email address" for="{{ form.image.id_for_label }}">Image:</label>
+                  {{ form.image }}
+                </div>
+                
+      
+                <div class="text-center text-lg-start mt-4 pt-2">
+                  <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Create Profile</button>
+                </div>
+      
+              </form>
+            </div>
+          </div>
+        </div>
+        
+      </section>
+{% endblock content %} 
